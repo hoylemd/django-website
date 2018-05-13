@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+<h2>Welcome!</h2>
+
+<ul>
+  <li><a href="{% url 'hello-function' %}">Function-based view example</a></li>
+  <li><a href="{% url 'hello-template' %}">FBV with render() example</a></li>
+  <li><a href="{% url 'hello-class' %}">Class-based view example</a></li>
+<ul>
+
+{% endblock 'body' %}

@@ -1,4 +1,4 @@
-"""michaelhoyle URL Configuration
+"""website URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -13,16 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.http import HttpResponse
+
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
 
-
-def hello(request):
-    return HttpResponse('hello, world!')
-
+import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', hello),
+    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('function', views.hello_function_based_view, name='hello-function'),
+    path('template', views.hello_with_template, name='hello-template'),
+    path('class', views.HelloClassBased.as_view(), name='hello-class'),
 ]
